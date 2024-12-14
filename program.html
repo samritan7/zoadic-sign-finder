@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodiac Sign Finder</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #00b4d8, #0077b6);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            font-size: 26px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        marquee {
+            font-size: 24px;
+            color: #ff6f61;
+            font-weight: bold;
+        }
+        input[type="date"] {
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="date"]:focus {
+            border-color: #4CAF50;
+        }
+        button {
+            padding: 12px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #ff6f61;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <marquee behavior="scroll" direction="left">Welcome to the Zodiac Sign Finder! Find out your Zodiac Sign based on your birthdate.</marquee>
+    <h2>Find Your Zodiac Sign</h2>
+    <input type="date" id="birthdate" />
+    <button onclick="findZodiac()">Find Zodiac</button>
+    <div class="result" id="zodiacResult"></div>
+</div>
+
+<footer>
+    <p>&copy; <span id="year"></span> <a href="javascript:void(0);">Samritan</a>. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Update the copyright year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function findZodiac() {
+        var birthdate = new Date(document.getElementById("birthdate").value);
+        if (isNaN(birthdate)) {
+            alert("Please enter a valid date!");
+            return;
+        }
+        
+        var month = birthdate.getMonth() + 1; // getMonth() returns 0-11
+        var day = birthdate.getDate();
+
+        var zodiacSign = "";
+
+        if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+            zodiacSign = "Aries";
+        } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+            zodiacSign = "Taurus";
+        } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+            zodiacSign = "Gemini";
+        } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+            zodiacSign = "Cancer";
+        } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+            zodiacSign = "Leo";
+        } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+            zodiacSign = "Virgo";
+        } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+            zodiacSign = "Libra";
+        } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+            zodiacSign = "Scorpio";
+        } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+            zodiacSign = "Sagittarius";
+        } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+            zodiacSign = "Capricorn";
+        } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+            zodiacSign = "Aquarius";
+        } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+            zodiacSign = "Pisces";
+        }
+
+        document.getElementById("zodiacResult").innerText = "Your Zodiac Sign is: " + zodiacSign;
+    }
+</script>
+
+</body>
+</html>
